@@ -1,4 +1,4 @@
-package com.example.templateplugin;
+package com.example.template.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
@@ -8,8 +8,6 @@ import java.util.logging.Level;
 
 /**
  * Main plugin class.
- *
- * TODO: Implement your plugin logic here.
  *
  * @author YourName
  * @version 1.0.0

@@ -5,6 +5,7 @@ import com.hypixel.hytale.server.core.event.events.player.PlayerConnectEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
+import com.hypixel.hytale.server.core.universe.Universe;
 import com.jjeanniard.plugin.commande.Command;
 
 import javax.annotation.Nonnull;
@@ -63,7 +64,7 @@ public final class Study extends JavaPlugin {
         getEventRegistry().register(PlayerConnectEvent.class, event -> {
             PlayerRef playerRef = event.getPlayerRef();
 
-            playerRef.sendMessage(Message.raw("Bienvenue joueur " + playerRef.getUsername()));
+            Universe.get().sendMessage(Message.raw("Bienvenue joueur :" + playerRef.getUsername()));
         });
     }
 

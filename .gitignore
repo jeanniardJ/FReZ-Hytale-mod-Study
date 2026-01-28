@@ -59,3 +59,5 @@ desktop.ini
 # Template specific
 libs/HytaleServer.jar
 buildSrc/
+.gemini/
+gha-creds-*.json

@@ -1,7 +1,10 @@
 package com.jjeanniard.plugin;
 
+import com.hypixel.hytale.server.core.Message;
+import com.hypixel.hytale.server.core.event.events.player.PlayerConnectEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.jjeanniard.plugin.commande.Command;
 
 import javax.annotation.Nonnull;
@@ -56,7 +59,12 @@ public final class Study extends JavaPlugin {
      */
     @Override
     protected void start() {
-        setLog(INFO, "Plugin en  cours de demarrage");
+        setLog(INFO, "Plugin en  cours de démarrage");
+        getEventRegistry().register(PlayerConnectEvent.class, event -> {
+            PlayerRef playerRef = event.getPlayerRef();
+
+            playerRef.sendMessage(Message.raw("Bienvenue joueur " + playerRef.getUsername()));
+        });
     }
 
     /**

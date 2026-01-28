@@ -2,6 +2,7 @@ package com.jjeanniard.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import com.jjeanniard.plugin.commande.Command;
 
 import javax.annotation.Nonnull;
 
@@ -45,8 +46,9 @@ public final class Study extends JavaPlugin {
      */
     @Override
     protected void setup() {
-        setLog(INFO, "Plugin en  cours de demarrage");
+        setLog(INFO, "Initialisation du plugin");
         setLog(INFO, instance.getName() + " version " + instance.getManifest().getVersion().toString());
+        getCommandRegistry().registerCommand(new Command());
     }
 
     /**
@@ -54,7 +56,7 @@ public final class Study extends JavaPlugin {
      */
     @Override
     protected void start() {
-
+        setLog(INFO, "Plugin en  cours de demarrage");
     }
 
     /**
@@ -62,7 +64,7 @@ public final class Study extends JavaPlugin {
      */
     @Override
     public void shutdown() {
-
+        setLog(INFO, "Plugin de  cours d'arret");
     }
 
 }

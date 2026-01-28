@@ -1,22 +1,20 @@
 {
-    "Group": "Example",
-    "Name": "ExamplePlugin",
-    "Version": "0.0.2",
-    "Description": "An example plugin for HyTale!",
-    "Authors": [
-        {
-            "Name": "It's you!"
-        }
-    ],
-    "Website": "example.org",
-    "ServerVersion": "*",
-    "Dependencies": {
-        
-    },
-    "OptionalDependencies": {
-        
-    },
-    "DisabledByDefault": false,
-    "Main": "org.example.plugin.ExamplePlugin",
-    "IncludesAssetPack": true
+  "Group": "Jjeanniard",
+  "Name": "Study",
+  "Version": "0.0.2",
+  "Description": "",
+  "Authors": [
+    {
+      "Name": "Jjeanniard"
+    }
+  ],
+  "Website": "jonathanjeanniard.me",
+  "ServerVersion": "*",
+  "Dependencies": {
+  },
+  "OptionalDependencies": {
+  },
+  "DisabledByDefault": false,
+  "Main": "com.jjeanniard.plugin.Study",
+  "IncludesAssetPack": true
 }

@@ -5,12 +5,39 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
 import javax.annotation.Nonnull;
 
-public class Study extends JavaPlugin {
+import static com.jjeanniard.plugin.Log.setLog;
+import static java.util.logging.Level.INFO;
+
+/**
+ * Study plugin.
+ *
+ * @author Jjeanniard
+ * @version 0.0.2
+ * @see JavaPlugin
+ * @see JavaPluginInit
+ * @see Log
+ * @see #getInstance()
+ * @since 0.0.1
+ */
+@SuppressWarnings("unused")
+public final class Study extends JavaPlugin {
+
+    private static Study instance;
+
+
     /**
      * Constructor - Called when plugin is loaded.
      */
     public Study(@Nonnull JavaPluginInit init) {
         super(init);
+        instance = this;
+    }
+
+    /**
+     * @return The plugin instance.
+     */
+    public static Study getInstance() {
+        return instance;
     }
 
     /**
@@ -18,7 +45,8 @@ public class Study extends JavaPlugin {
      */
     @Override
     protected void setup() {
-
+        setLog(INFO, "Plugin en  cours de demarrage");
+        setLog(INFO, instance.getName() + " version " + instance.getManifest().getVersion().toString());
     }
 
     /**

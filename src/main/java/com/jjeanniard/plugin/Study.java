@@ -42,7 +42,7 @@ public final class Study extends JavaPlugin {
     public Study(@Nonnull JavaPluginInit init) {
         super(init);
         instance = this;
-        // Load the configuration, appele dela propriété CODEC qui est Static dans MyConfig
+        // Load the configuration, appelé dela propriété CODEC qui est Static dans MyConfig
         config = this.withConfig("config", MyConfig.CODEC);
     }
 
@@ -64,14 +64,12 @@ public final class Study extends JavaPlugin {
     private void ensureConfigFileExists(Config<MyConfig> config, String fileName) {
         Path configPath = this.getDataDirectory().resolve(fileName);
         if (!configPath.toFile().exists()) {
-            config.save().thenRun(() -> {
-                setLog(INFO, "Fichier de configuration créé par défaut.");
-            }).exceptionally(ex -> {
+            config.save().thenRun(() -> setLog(INFO, "Fichier de configuration créé par défaut.")).exceptionally(ex -> {
                 setLog(INFO, "Erreur lors de la création du fichier de configuration : " + ex.getMessage());
                 return null;
             });
         } else {
-            setLog(INFO, "Fichier de configuration chargé depuis : " + configPath.toString());
+            setLog(INFO, "Fichier de configuration chargé depuis : " + configPath);
         }
     }
 
@@ -114,7 +112,7 @@ public final class Study extends JavaPlugin {
             setLog(INFO, "Sauvegarde de la configuration...");
             config.save().join(); // OK de bloquer au shutdown
         }
-        setLog(INFO, "Plugin en cours d'arret");
+        setLog(INFO, "Plugin en cours d'arrêt");
     }
 
 }

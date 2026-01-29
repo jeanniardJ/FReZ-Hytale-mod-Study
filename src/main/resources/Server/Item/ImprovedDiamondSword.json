@@ -1,0 +1,20 @@
+{
+  "FormatVersion": "1.0",
+  "Item": {
+    "Name": "ImprovedDiamondSword",
+    "CreativeTabs": [
+      "Combat"
+    ],
+    "Components": {
+      "Hytale.Item": {
+        "Tool": "Sword"
+      },
+      "Hytale.Durability": {
+        "MaxDurability": 2000
+      },
+      "Hytale.Damage": {
+        "Amount": 10
+      }
+    }
+  }
+}

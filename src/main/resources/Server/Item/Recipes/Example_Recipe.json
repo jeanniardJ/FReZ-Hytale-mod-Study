@@ -1,12 +1,16 @@
 {
   "Input": [
     {
-      "ItemId": "Soil_Dirt",
-      "Quantity": 10
+      "ItemId": "DiamondBlock",
+      "Quantity": 2
+    },
+    {
+      "ItemId": "Stick",
+      "Quantity": 1
     }
   ],
   "PrimaryOutput": {
-    "ItemId": "Soil_Dirt",
+    "ItemId": "ImprovedDiamondSword",
     "Quantity": 1
   },
   "BenchRequirement": [

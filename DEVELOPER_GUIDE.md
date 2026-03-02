@@ -71,68 +71,50 @@ Voici comment l'intégrer dans votre flux de travail :
 
 ## 4. Synchronisation des Stories avec GitHub Issues
 
-Pour assurer une bonne traçabilité et une organisation claire de votre travail, nous avons lié chaque story à une issue
-GitHub.
+Pour assurer une bonne traçabilité et une organisation claire de votre travail, nous synchronisons les stories locales avec les issues GitHub.
 
-### Workflow Recommandé
+### Workflow de Synchronisation avec l'Agent Gemini CLI
 
-1. **Création d'une Story Localement** :
-    * Créez votre fichier de story `stories/XX_titre_story.md`.
-    * Remplissez-le avec le titre, la description, les critères d'acceptation et les pistes d'implémentation technique,
-      comme illustré dans les exemples fournis.
+En tant qu'utilisateur, vous pouvez demander à l'agent Gemini CLI (moi) d'aider à la gestion de vos issues GitHub.
+L'agent est autorisé à :
 
-2. **Création de l'Issue sur GitHub** :
-    * Utilisez l'interface GitHub ou un outil comme l'agent pour créer une nouvelle issue.
-    * Le **titre de l'issue** doit être le titre de votre story (ex: `Story 15: Nouveau Système`).
-    * Le **corps de l'issue** doit être le contenu intégral de votre fichier `stories/XX_titre_story.md`.
+1.  **Créer des Issues** : L'agent peut créer de nouvelles issues sur GitHub basées sur le contenu de vos fichiers `stories/*.md`.
+    *   Le **titre de l'issue** sera le titre de votre story (ex: `Story 15: Nouveau Système`).
+    *   Le **corps de l'issue** sera le contenu intégral de votre fichier `stories/XX_titre_story.md`.
+2.  **Mettre à Jour des Issues** : L'agent peut mettre à jour le corps des issues existantes sur GitHub pour refléter les modifications apportées à vos fichiers `stories/*.md`.
+3.  **Gérer les Doublons** : L'agent peut aider à détecter et à gérer les issues en double, en les liant à une issue primaire et en les fermant si nécessaire.
 
-3. **Liaison et Suivi dans IntelliJ IDEA** :
-    * **Intégration GitHub** : IntelliJ IDEA possède une excellente intégration avec GitHub. Assurez-vous d'avoir
-      configuré votre compte GitHub dans l'IDE.
-    * **Fenêtre d'Outils "GitHub" ou "Version Control"** : Vous pouvez accéder et interagir avec vos issues directement
-      depuis l'IDE.
-    * **Création de Branche depuis une Issue** : Une fonctionnalité très utile est la possibilité de créer une nouvelle
-      branche Git directement à partir d'une issue GitHub. IntelliJ nommera la branche de manière conventionnelle (ex:
-      `feature/ISSUE_NUMBER-issue-title`).
-    * **Commits liés aux Issues** : Lors de vos commits, vous pouvez référencer l'issue correspondante dans le message
-      de commit (ex: `git commit -m "feat: Implémentation du nouveau système (closes #15)"`).
+### Liaison et Suivi dans IntelliJ IDEA
 
-### Astuce pour la Mise à Jour
+1.  **Intégration GitHub** : IntelliJ IDEA possède une excellente intégration avec GitHub. Assurez-vous d'avoir configuré votre compte GitHub dans l'IDE.
+2.  **Fenêtre d'Outils "GitHub" ou "Version Control"** : Vous pouvez accéder et interagir avec vos issues directement depuis l'IDE.
+3.  **Création de Branche depuis une Issue** : Une fonctionnalité très utile est la possibilité de créer une nouvelle
+    branche Git directement à partir d'une issue GitHub. IntelliJ nommera la branche de manière conventionnelle (ex:
+    `feature/ISSUE_NUMBER-issue-title`).
+4.  **Commits liés aux Issues** : Lors de vos commits, vous pouvez référencer l'issue correspondante dans le message
+    de commit (ex: `git commit -m "feat: Implémentation du nouveau système (closes #15)"`).
 
-* **Mettre à jour une Story** : Si vous modifiez le contenu d'un fichier `stories/*.md`, pensez à mettre à jour
-  manuellement le corps de l'issue GitHub correspondante pour que la documentation reste synchronisée.
+### Note sur les Interactions de Bots Externes
 
-### Automatisation Future
+Si d'autres services ou "bots" (comme "GitHub Copilot bot" ou d'autres systèmes d'automatisation) interagissent avec vos issues GitHub, leur gestion relève de la configuration de votre dépôt GitHub et est indépendante de mon action en tant qu'agent Gemini CLI. Mon rôle se limite à mes interactions directes via les outils que je possède et sous votre direction.
 
-Bien qu'une automatisation complète et en temps réel de la synchronisation (via des webhooks ou GitHub Actions) soit
-possible, elle est au-delà de la portée de ce guide d'apprentissage initial. Le workflow manuel décrit ci-dessus vous
-assure une compréhension des étapes fondamentales.
-
-### Prévention des Doublons et Fusion
+### Prévention des Doublons et Fusion (avec l'aide de l'agent)
 
 Pour éviter la duplication des issues, suivez cette procédure :
 
-1. **Vérifier les Issues Existantes** : Avant de créer une nouvelle issue sur GitHub pour une story, utilisez la
-   fonction de recherche de GitHub (ou l'intégration IntelliJ IDEA) pour vérifier si une issue avec un titre similaire
-   existe déjà. Vous pouvez rechercher `Story XX: [Titre de la Story]`.
+1. **Demandez à l'agent de vérifier les issues existantes** : Avant de demander à l'agent de créer une nouvelle issue pour une story, vous pouvez lui demander de rechercher si une issue avec un titre similaire existe déjà.
 2. **Gestion des Duplicatas** :
-    * **Si un duplicata est trouvé (Issue Primaire)** :
-        * Copiez le contenu enrichi de votre fichier `stories/*.md` et mettez à jour le corps de l'Issue Primaire si
-          nécessaire.
-        * Si vous avez accidentellement créé une nouvelle issue, commentez-la pour indiquer qu'elle est un doublon de l'
-          Issue Primaire (par ex. "Cette issue est un doublon de #YY. Veuillez vous référer à l'issue #YY pour le
-          suivi.")
-        * Fermez la nouvelle issue en sélectionnant "Mark as duplicate" et en la liant à l'Issue Primaire.
-    * **Si aucun duplicata n'est trouvé** :
-        * Procédez à la création de votre nouvelle issue.
-
+    *   **Si un duplicata est trouvé (Issue Primaire)** : L'agent pourra mettre à jour le corps de l'Issue Primaire avec le contenu le plus récent de votre fichier `stories/*.md`. Si une nouvelle issue a été accidentellement créée pour la même story, l'agent pourra la commenter pour indiquer qu'elle est un doublon de l'Issue Primaire et la fermer en la liant à celle-ci.
+    *   **Si aucun duplicata n'est trouvé** : L'agent pourra créer votre nouvelle issue.
 3. **Convention de Nommage** : Adoptez une convention de nommage stricte pour les titres d'issues, comme
    `Story XX: [Titre de la Story]`, pour faciliter la détection des doublons.
 
-## 5. Style de Code
+## 5. Style de Code et Patterns de Conception
 
-Pour assurer la cohérence, je vous recommande d'adopter un guide de style standard. Le *
-*[Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)** est une excellente référence :
+Pour assurer la cohérence et la qualité de votre code, je vous recommande d'adopter un guide de style standard et de vous familiariser avec les patterns de conception.
+
+### Style de Code
+Le **[Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)** est une excellente référence :
 
 - Conventions de nommage.
 - Règles de formatage.
@@ -140,6 +122,13 @@ Pour assurer la cohérence, je vous recommande d'adopter un guide de style stand
 
 > **Action :** Lisez les sections principales de ce guide pour vous familiariser avec les conventions. De nombreux IDEs
 peuvent être configurés pour formater automatiquement votre code selon ce style.
+
+### Patterns de Conception
+Les patterns de conception sont des solutions éprouvées à des problèmes de conception de logiciels courants. Les connaître vous aidera à écrire du code plus modulaire, maintenable et extensible.
+
+*   **Ressource Recommandée :** Le site **[Refactoring Guru](https://refactoring.guru/fr/design-patterns)** propose des explications claires et des exemples pour de nombreux patterns (Patrons de Conception).
+
+> **Action :** Explorez les patterns de conception Creational (Création), Structural (Structurel) et Behavioral (Comportemental) sur Refactoring Guru. Identifiez comment certains d'entre eux (comme Singleton, Observer, Strategy) peuvent être appliqués dans le contexte des plugins Hytale.
 
 ## 6. Logging
 

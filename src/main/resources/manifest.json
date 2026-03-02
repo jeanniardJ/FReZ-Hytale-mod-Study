@@ -1,20 +1,22 @@
 {
-  "Group": "Jjeanniard",
-  "Name": "Study",
-  "Version": "1.0.2",
-  "Description": "",
-  "Authors": [
-    {
-      "Name": "Jjeanniard"
-    }
-  ],
-  "Website": "jonathanjeanniard.me",
-  "ServerVersion": "*",
-  "Dependencies": {
-  },
-  "OptionalDependencies": {
-  },
-  "DisabledByDefault": false,
-  "Main": "com.jjeanniard.plugin.Study",
-  "IncludesAssetPack": true
+    "Group": "Jjeanniard",
+    "Name": "Study",
+    "Version": "0.0.2",
+    "Description": "",
+    "Authors": [
+        {
+            "Name": "Jjeanniard"
+        }
+    ],
+    "Website": "jonathanjeanniard.me",
+    "ServerVersion": "*",
+    "Dependencies": {
+        
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "com.jjeanniard.plugin.Study",
+    "IncludesAssetPack": true
 }
